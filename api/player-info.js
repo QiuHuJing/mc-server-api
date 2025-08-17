@@ -39,11 +39,11 @@ module.exports = async (req, res) => {
     }
 
     // 2. 获取背包信息（通过 EssentialsX 的 invsee 指令）
-    const invRes = await rcon.send(`invsee ${playerName}`);
+    const invRes = await rcon.send(`inspect ${playerName}`);
     const inventory = parseInventory(invRes);
 
     // 3. 获取 PAPI 变量（需服务器安装 PlaceholderAPI）
-    const papiRes = await rcon.send(`papi parse ${playerName} 生命值:%player_health% 等级:%mcmmo_power_level%`);
+    const papiRes = await rcon.send(`papi parse ${playerName} 生命值:%player_health% 等级:%mcmmo_power_level% 公会:%mcmmo_party_name% 公会等级:%mcmmo_party_level%`);
     const papiVariables = parsePAPI(papiRes);
 
     await rcon.disconnect();
@@ -89,4 +89,5 @@ function parsePAPI(raw) {
     vars[match[1]] = match[2];
   }
   return vars;
+
 }
