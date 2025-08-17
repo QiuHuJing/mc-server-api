@@ -3,7 +3,7 @@ const cors = require('cors');
 
 // 允许跨域（替换为你的 GitHub Pages 域名）
 const corsMiddleware = cors({
-  origin: 'https://QiuHuJing.github.io', // 例如 https://4u4n.github.io
+  origin: '192.168.3.1:63342', // 例如 https://4u4n.github.io
   methods: ['GET']
 });
 
@@ -91,3 +91,4 @@ function parsePAPI(raw) {
   return vars;
 
 }
+
